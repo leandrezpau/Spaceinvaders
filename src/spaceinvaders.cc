@@ -1,3 +1,7 @@
+/*
+Space Invaders by leandrezpau. A recreation with a special interface of the original Arcade Space Invaders
+My First graphic proyect, I hope the code is legible. 20/12/2024
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -5,13 +9,11 @@
 #include <time.h>
 
 
-#include "/esat/window.h"
+#include "esat/window.h"
 #include "esat/draw.h"
 #include "esat/input.h"
 #include "esat/sprite.h"
 #include "esat/time.h"
-
-#define _WIN32
 
 #ifdef _WIN32
    #include "esat_extra/soloud/soloud.h"
@@ -125,9 +127,15 @@ void InitSound();
 void FreeSound();
 
 
-/*******************************************/
-/*            MAIN FUNCTION                */
-/*******************************************/
+/********************************************************/
+/*          .___  ___.      ___       __  .__   __. 
+            |   \/   |     /   \     |  | |  \ |  | 
+            |  \  /  |    /  ^  \    |  | |   \|  | 
+            |  |\/|  |   /  /_\  \   |  | |  . `  | 
+            |  |  |  |  /  _____  \  |  | |  |\   | 
+            |__|  |__| /__/     \__\ |__| |__| \__| 
+                                                        */
+/********************************************************/
 int esat::main(int argc, char **argv) {
    //TO INIT EVERYTHING
    Init();
@@ -158,56 +166,56 @@ void Init(){
    esat::WindowInit(800,750);
    esat::WindowSetMouseVisibility(true);
    esat::DrawSetStrokeColor(255,255,0);
-   esat::DrawSetTextFont("assets/fonts/Korteque.ttf");
+   esat::DrawSetTextFont("../assets/fonts/Korteque.ttf");
    esat::DrawSetTextSize(50);
    //INIT SPRITES<-
-   player1 = esat::SpriteFromFile("assets/sprites/arriba1.png");
-   player2 = esat::SpriteFromFile("assets/sprites/arriba2.png");
-   life = esat::SpriteFromFile("assets/sprites/life.png");
-   bullet_sprite = esat::SpriteFromFile("assets/sprites/fireball.png");
-   enemy_bullet_sprite = esat::SpriteFromFile("assets/sprites/blueball.png");
-   background = esat::SpriteFromFile("assets/sprites/background.png");
-   enemy1_1  = esat::SpriteFromFile("assets/sprites/enemy1_1.png");
-   enemy1_2  = esat::SpriteFromFile("assets/sprites/enemy1_2.png");
-   enemy2_1  = esat::SpriteFromFile("assets/sprites/enemy2_1.png");
-   enemy2_2  = esat::SpriteFromFile("assets/sprites/enemy2_2.png");
-   enemy3_1  = esat::SpriteFromFile("assets/sprites/enemy3_1.png");
-   enemy3_2  = esat::SpriteFromFile("assets/sprites/enemy3_2.png");
-   spaceship1  = esat::SpriteFromFile("assets/sprites/spaceship.png");
-   spaceship2  = esat::SpriteFromFile("assets/sprites/spaceship2.png");
+   player1 = esat::SpriteFromFile("../assets/sprites/arriba1.png");
+   player2 = esat::SpriteFromFile("../assets/sprites/arriba2.png");
+   life = esat::SpriteFromFile("../assets/sprites/life.png");
+   bullet_sprite = esat::SpriteFromFile("../assets/sprites/fireball.png");
+   enemy_bullet_sprite = esat::SpriteFromFile("../assets/sprites/blueball.png");
+   background = esat::SpriteFromFile("../assets/sprites/background.png");
+   enemy1_1  = esat::SpriteFromFile("../assets/sprites/enemy1_1.png");
+   enemy1_2  = esat::SpriteFromFile("../assets/sprites/enemy1_2.png");
+   enemy2_1  = esat::SpriteFromFile("../assets/sprites/enemy2_1.png");
+   enemy2_2  = esat::SpriteFromFile("../assets/sprites/enemy2_2.png");
+   enemy3_1  = esat::SpriteFromFile("../assets/sprites/enemy3_1.png");
+   enemy3_2  = esat::SpriteFromFile("../assets/sprites/enemy3_2.png");
+   spaceship1  = esat::SpriteFromFile("../assets/sprites/spaceship.png");
+   spaceship2  = esat::SpriteFromFile("../assets/sprites/spaceship2.png");
 
 
    //AL DIFRENT BARRIERS2   
-   barrier1_1 = esat::SpriteFromFile("assets/sprites/barrier1_1.png");
-   barrier1_2 = esat::SpriteFromFile("assets/sprites/barrier1_2.png");
-   barrier1_3 = esat::SpriteFromFile("assets/sprites/barrier1_3.png");
-   barrier1_4 = esat::SpriteFromFile("assets/sprites/barrier1_4.png");
+   barrier1_1 = esat::SpriteFromFile("../assets/sprites/barrier1_1.png");
+   barrier1_2 = esat::SpriteFromFile("../assets/sprites/barrier1_2.png");
+   barrier1_3 = esat::SpriteFromFile("../assets/sprites/barrier1_3.png");
+   barrier1_4 = esat::SpriteFromFile("../assets/sprites/barrier1_4.png");
 
 
-   barrier2_1 = esat::SpriteFromFile("assets/sprites/barrier2_1.png");
-   barrier2_2 = esat::SpriteFromFile("assets/sprites/barrier2_2.png");
-   barrier2_3 = esat::SpriteFromFile("assets/sprites/barrier2_3.png");
-   barrier2_4 = esat::SpriteFromFile("assets/sprites/barrier2_4.png");
+   barrier2_1 = esat::SpriteFromFile("../assets/sprites/barrier2_1.png");
+   barrier2_2 = esat::SpriteFromFile("../assets/sprites/barrier2_2.png");
+   barrier2_3 = esat::SpriteFromFile("../assets/sprites/barrier2_3.png");
+   barrier2_4 = esat::SpriteFromFile("../assets/sprites/barrier2_4.png");
 
 
-   barrier3_1 = esat::SpriteFromFile("assets/sprites/barrier3_1.png");
-   barrier3_2 = esat::SpriteFromFile("assets/sprites/barrier3_2.png");
-   barrier3_3 = esat::SpriteFromFile("assets/sprites/barrier3_3.png");
-   barrier3_4 = esat::SpriteFromFile("assets/sprites/barrier3_4.png");
+   barrier3_1 = esat::SpriteFromFile("../assets/sprites/barrier3_1.png");
+   barrier3_2 = esat::SpriteFromFile("../assets/sprites/barrier3_2.png");
+   barrier3_3 = esat::SpriteFromFile("../assets/sprites/barrier3_3.png");
+   barrier3_4 = esat::SpriteFromFile("../assets/sprites/barrier3_4.png");
 
 
-   coin1 = esat::SpriteFromFile("assets/sprites/coin1.png");
-   coin2 = esat::SpriteFromFile("assets/sprites/coin2.png");
-   coin3 = esat::SpriteFromFile("assets/sprites/coin3.png");
-   coin4 = esat::SpriteFromFile("assets/sprites/coin4.png");
-   coin5 = esat::SpriteFromFile("assets/sprites/coin5.png");
-   coin6 = esat::SpriteFromFile("assets/sprites/coin6.png");
+   coin1 = esat::SpriteFromFile("../assets/sprites/coin1.png");
+   coin2 = esat::SpriteFromFile("../assets/sprites/coin2.png");
+   coin3 = esat::SpriteFromFile("../assets/sprites/coin3.png");
+   coin4 = esat::SpriteFromFile("../assets/sprites/coin4.png");
+   coin5 = esat::SpriteFromFile("../assets/sprites/coin5.png");
+   coin6 = esat::SpriteFromFile("../assets/sprites/coin6.png");
 
 
-   boton1 = esat::SpriteFromFile("assets/sprites/boton1.png");
-   boton2 = esat::SpriteFromFile("assets/sprites/boton2.png");
-   continue1 = esat::SpriteFromFile("assets/sprites/continue1.png");
-   continue2 = esat::SpriteFromFile("assets/sprites/continue2.png");
+   boton1 = esat::SpriteFromFile("../assets/sprites/boton1.png");
+   boton2 = esat::SpriteFromFile("../assets/sprites/boton2.png");
+   continue1 = esat::SpriteFromFile("../assets/sprites/continue1.png");
+   continue2 = esat::SpriteFromFile("../assets/sprites/continue2.png");
 
 
 
@@ -221,6 +229,7 @@ void Init(){
            enemy[i][e].y=300-e*40;
        }
    }
+   //Barrier coords, stages and measures
    for(int i=0;i<4;i++){
        for(int e=0;e<4;e++){
            barrier[i][e].w=42;
@@ -228,30 +237,30 @@ void Init(){
            barrier[i][e].alive=3;
            switch(e){
                case 0:{
-                   barrier[i][e].y=550;
-                   barrier[i][e].x=100+i*175;
+                   barrier[i][e].y= 550;
+                   barrier[i][e].x= 100 + i * 175;
                    break;
                 }
                case 1:{
-                   barrier[i][e].y=550;
-                   barrier[i][e].x=100+42+i*175;
+                   barrier[i][e].y= 550;
+                   barrier[i][e].x= 100 + 42 + i * 175;
                    break;
                 }
                case 2:{
-                   barrier[i][e].y=550+32;
-                   barrier[i][e].x=100+i*175;
+                   barrier[i][e].y= 550 + 32;
+                   barrier[i][e].x= 100 + i * 175;
                    break;
                 }
                case 3:{
-                   barrier[i][e].y=550+32;
-                   barrier[i][e].x=100+42+i*175;
+                   barrier[i][e].y= 550 + 32;
+                   barrier[i][e].x= 100 + 42 + i * 175;
                    break;
                 }
            }
           
        }
    }
-   player.alive=3;
+   player.alive = 3;
 }
 //TO CHECK LINES AND ROWS
 void CheckColsAndRows(){
@@ -1198,13 +1207,13 @@ void InitSound(){
     //Load audio
     soloud.init();
     //Enemy explosion
-    audio[0].load("assets/audio/backgroundsound.mp3");
+    audio[0].load("../assets/audio/backgroundsound.mp3");
     audio[0].setLooping(true);
-    audio[1].load("assets/audio/shoot.wav");
-    audio[2].load("assets/audio/invaderkilled.wav");
-    audio[3].load("assets/audio/ufo_lowpitch.wav");
-    audio[4].load("assets/audio/ufo_highpitch.wav");
-    audio[5].load("assets/audio/explosion.wav");
+    audio[1].load("../assets/audio/shoot.wav");
+    audio[2].load("../assets/audio/invaderkilled.wav");
+    audio[3].load("../assets/audio/ufo_lowpitch.wav");
+    audio[4].load("../assets/audio/ufo_highpitch.wav");
+    audio[5].load("../assets/audio/explosion.wav");
 
     soloud.play(audio[0], 0.5f /* volumen */, 0.0f /* pan */);
 #endif
